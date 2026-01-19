@@ -44,9 +44,27 @@ document.addEventListener("DOMContentLoaded", async() => {
         const email = getElement("#email").value;
 
         // make API POST request to add email to list
-        alert("Error: Add email not working yet.");
+        if (name === "" || email === "") {
+            alert("Please enter both name and email");
+            return;
+        }
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({name, email})
+            });
+            
+        } catch (e) {}
 
         // make API GET request to display updated data
+        const getResponse = await fetch(url);
+        const updatedEmails = await getResponse.json();
+
+        displayEmails(updatedEmails);
     });
 
     getElement("#delete_email").addEventListener("click", async() => {
@@ -59,8 +77,17 @@ document.addEventListener("DOMContentLoaded", async() => {
         } 
 
         // make API DELETE request to delete email from list
-        alert("Error: Delete email not working yet.");
+        try {
+            const response = await fetch(url + id, {
+                method: "DELETE"
+            });
+            
+        } catch (e) {}
 
         // make API GET request to display updated data
+        const getResponse = await fetch(url);
+        const updatedEmails = await getResponse.json();
+
+        displayEmails(updatedEmails);
     });
 });
