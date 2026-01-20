@@ -12,7 +12,7 @@ const displayRover = (roverData) => {
     $("#max").textContent = roverData.max_date;
 
     const yearSelect = $("#year");
-    yearSelect.innerHTML - "";
+    yearSelect.innerHTML = "";
     for(let i=2026; i>1999; i--) {
         let option = document.createElement("option");
         option.value = i;
@@ -21,7 +21,7 @@ const displayRover = (roverData) => {
     }
 
     const monthSelect = $("#month");
-    monthSelect.innerHTML - "";
+    monthSelect.innerHTML = "";
     for(let i=1; i<=12; i++) {
         let option = document.createElement("option");
         option.value = i;
@@ -30,7 +30,7 @@ const displayRover = (roverData) => {
     }
 
     const daySelect = $("#date");
-    daySelect.innerHTML - "";
+    daySelect.innerHTML = "";
     for(let i=1; i<=31; i++) {
         let option = document.createElement("option");
         option.value = i;
@@ -41,8 +41,9 @@ const displayRover = (roverData) => {
     const cameraSelect = $("#camera");
 
     const cameraData = roverData.cameras;
-
+    cameraSelect.innerHTML = "";
     cameraData.forEach( camera => {
+        cameraData.innerHTML
         let option = document.createElement("option")
         option.value = camera.name;
         option.textContent = camera.name;
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const imageData = await imageRequest.json();
 
         const displayDiv = $("#display");
+        displayDiv.innerHTML = "";
         imageData.photos.forEach( photo => {
             let image = document.createElement("img");
             image.src = photo.img_src;
