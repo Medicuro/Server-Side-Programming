@@ -6,6 +6,7 @@ const getElement = (selector) => document.querySelector(selector);
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
     const questionEl = getElement('#question');
     const answerEl = getElement('#answer');
     const nextBtn = getElement('#Next');
